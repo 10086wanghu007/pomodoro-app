@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>番茄钟</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="noise-overlay"></div>
+
+    <!-- 精美弹窗提醒 -->
+    <div class="modal-overlay" id="modal-overlay">
+        <div class="modal-card" id="modal-card">
+            <div class="modal-ripple"></div>
+            <div class="modal-icon" id="modal-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <circle cx="12" cy="12" r="10"/>
+                    <polyline points="12 6 12 12 16 14"/>
+                </svg>
+            </div>
+            <h2 class="modal-title" id="modal-title">时间到</h2>
+            <p class="modal-subtitle" id="modal-subtitle">休息一下吧</p>
+            <div class="modal-actions">
+                <button class="modal-btn modal-btn-primary" id="modal-confirm">好的</button>
+                <button class="modal-btn modal-btn-secondary" id="modal-snooze">再专注 5 分钟</button>
+            </div>
+            <div class="modal-progress">
+                <div class="modal-progress-bar" id="modal-progress-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <header class="fade-in" style="--delay: 0s">
+            <h1>番茄钟</h1>
+            <p class="subtitle">专注 · 呼吸 · 沉淀</p>
+        </header>
+
+        <div class="timer-container fade-in" style="--delay: 0.15s">
+            <div class="timer-ring" id="timer-ring">
+                <svg class="timer-svg" viewBox="0 0 200 200">
+                    <defs>
+                        <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" id="grad-stop-1" stop-color="#e8a87c"/>
+                            <stop offset="100%" id="grad-stop-2" stop-color="#d4785c"/>
+                        </linearGradient>
+                    </defs>
+                    <circle class="timer-track" cx="100" cy="100" r="90"/>
+                    <circle class="timer-progress" cx="100" cy="100" r="90"
+                            stroke="url(#progressGradient)"/>
+                </svg>
+                <div class="timer-display">
+                    <div class="timer-time" id="timer-display">25:00</div>
+                    <div class="timer-label" id="timer-label">工作时间</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls fade-in" style="--delay: 0.3s">
+            <button class="btn btn-start" id="start-btn">开始</button>
+            <button class="btn btn-pause" id="pause-btn" disabled>暂停</button>
+            <button class="btn btn-reset" id="reset-btn">重置</button>
+        </div>
+
+        <div class="round-info fade-in" style="--delay: 0.4s">
+            <span class="round-current" id="current-round">1</span>
+            <span class="round-sep">/</span>
+            <span class="round-total" id="total-rounds">4</span>
+            <span class="round-label">轮</span>
+            <span class="status-text" id="status">准备开始</span>
+        </div>
+
+        <details class="settings-section fade-in" style="--delay: 0.5s">
+            <summary>设置</summary>
+            <div class="settings-grid">
+                <div class="setting-item">
+                    <label for="work-time">工作 (分钟)</label>
+                    <input type="number" id="work-time" value="25" min="0.1" max="60" step="0.1">
+                </div>
+                <div class="setting-item">
+                    <label for="short-break">短休息 (分钟)</label>
+                    <input type="number" id="short-break" value="5" min="0.1" max="30" step="0.1">
+                </div>
+                <div class="setting-item">
+                    <label for="long-break">长休息 (分钟)</label>
+                    <input type="number" id="long-break" value="15" min="0.1" max="60" step="0.1">
+                </div>
+                <div class="setting-item">
+                    <label for="rounds">轮数</label>
+                    <input type="number" id="rounds" value="4" min="1" max="10">
+                </div>
+                <div class="setting-item setting-toggle">
+                    <label for="force-popup">强制弹窗提醒</label>
+                    <div class="toggle-switch">
+                        <input type="checkbox" id="force-popup" checked>
+                        <span class="toggle-slider"></span>
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-save" id="save-settings">保存设置</button>
+        </details>
+
+        <section class="stats-section fade-in" style="--delay: 0.6s">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number" id="completed-count">0</div>
+                    <div class="stat-label">番茄</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="total-minutes">0</div>
+                    <div class="stat-label">分钟</div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
