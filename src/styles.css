@@ -264,6 +264,12 @@ header h1 {
     backdrop-filter: blur(8px);
 }
 
+.settings-section[open] {
+    max-height: 60vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
 .settings-section summary {
     padding: 14px 20px;
     cursor: pointer;
@@ -672,6 +678,24 @@ header h1 {
     .modal-title {
         font-size: 1.5rem;
     }
+}
+
+/* 滚动条样式 */
+.settings-section[open]::-webkit-scrollbar {
+    width: 4px;
+}
+
+.settings-section[open]::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.settings-section[open]::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+}
+
+.settings-section[open]::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.25);
 }
 
 /* === 响应式 === */
