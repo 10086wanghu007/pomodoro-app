@@ -2,6 +2,16 @@
 
 一个基于 Tauri v2 的番茄钟桌面应用，Rust 后端精确计时，Web 前端禅意极简设计。
 
+## 下载安装
+
+前往 [Releases](https://github.com/10086wanghu007/pomodoro-app/releases/latest) 下载：
+
+| 文件 | 说明 |
+|------|------|
+| `pomodoro-app.exe` | 绿色免安装版，双击直接运行 |
+| `pomodoro-app_0.1.0_x64_en-US.msi` | MSI 安装包 |
+| `pomodoro-app_0.1.0_x64-setup.exe` | NSIS 安装向导 |
+
 ## 功能特性
 
 - **高精度计时** — Rust `std::time::Instant` 追踪墙钟时间，毫秒级精度，不受浏览器节流影响
